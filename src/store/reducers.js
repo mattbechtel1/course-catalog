@@ -5,16 +5,31 @@ function userReducer(state=true, action) {
 }
 
 function coursesReducer(state=[], action) {
-    return state
+    switch (action.type) {
+       case 'LOAD_COURSES':
+           return action.courses
+        default: 
+            return state
+    }
 }
 
 function courseReducer(state=null, action) {
     return state
 }
 
+function subjectsReducer(state=[], action) {
+    switch (action.type) {
+        case 'LOAD_SUBJECTS':
+            return action.subjects.sort()
+        default:
+            return state
+    }
+}
+
 const rootReducer = combineReducers({
     user: userReducer,
     courses: coursesReducer,
+    subjects: subjectsReducer,
     course: courseReducer
 })
 

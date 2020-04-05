@@ -12,6 +12,7 @@ import FavHeader from './components/FavHeader'
 import Profile from './components/Profile'
 import Logout from './components/Logout'
 import Login from './components/Login'
+import CourseInfoPage from './course_view/CourseInfoPage'
 import { loadCourses, loadSubjects, logUserIn } from './store/actions';
 import {courses, subjects} from './data/mockData'
 
@@ -48,7 +49,7 @@ class App extends React.Component {
           </Route>
 
           <Route path='/courses/:id'>
-
+            {user ? <CourseInfoPage /> : <Redirect to='/' />}
           </Route>
 
           <Route path='/courses'>

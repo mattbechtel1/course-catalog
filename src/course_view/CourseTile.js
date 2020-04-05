@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {addFavorite, unfavorite} from '../store/actions'
-import SubjectCircle from './SubjectCircle'
-import {Card, Typography, CardMedia, CardContent, makeStyles, CardActions, IconButton, Tooltip} from '@material-ui/core'
+import SubjectContainer from './SubjectContainer'
+import {Card, Typography, CardMedia, CardContent, makeStyles, CardActions, IconButton, Tooltip, Button} from '@material-ui/core'
 import {Favorite as FavoriteIcon, FavoriteBorder as SaveIcon} from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
@@ -13,14 +14,11 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: '1.125rem'
     },
-    subjectContainer: {
-        display: 'flex',
-        flexWrap: 'wrap'
-    }
 }))
 
-const CourseTile = ({course: {title, subjects, short_desc, pic_url, id, intro_course}, user, unfavorite, addFavorite}) => {
+const CourseTile = ({course, user, unfavorite, addFavorite}) => {
     const classes = useStyles()
+    const {title, subjects, short_desc, pic_url, id, intro_course} = course
 
     return <Card className={classes.card}>
         <CardMedia
@@ -38,10 +36,10 @@ const CourseTile = ({course: {title, subjects, short_desc, pic_url, id, intro_co
                 {short_desc}
             </Typography>
             
-            <div className={classes.subjectContainer}>
-                {subjects.map(subject => <SubjectCircle key={`${id}-${subject}`} text={subject}/>)}
-                {intro_course ? <SubjectCircle key={`${id}-intro`} text='Intro Course' /> : null}
-            </div>
+            <SubjectContainer
+                id={id}
+                subjects={subjects}
+                introCourse={intro_course} />
         </CardContent>
         
         <CardActions>
@@ -56,6 +54,13 @@ const CourseTile = ({course: {title, subjects, short_desc, pic_url, id, intro_co
                     </IconButton>
                 </Tooltip>
             }
+            <Link to={`/courses/${course.id}`}>
+                <Button 
+                    variant='contained'
+                    color='primary'>
+                        Learn More
+                </Button>
+            </Link>
         </CardActions>
     </Card>
 }

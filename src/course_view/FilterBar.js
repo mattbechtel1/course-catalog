@@ -20,10 +20,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const FilterBar = ({filter, toggle, state, subjects, favOnly}) => {
-    const {textFilter, subjectFilter, favoritesFilter} = state
+    const {textFilter, subjectFilter} = state
     const classes = useStyles()
-
-    console.log(favoritesFilter)
     
     return <Toolbar className={classes.filterBar}>
         <label className={classes.label}>Filtering Options:</label>

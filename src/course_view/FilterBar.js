@@ -19,9 +19,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const FilterBar = ({filter, toggle, state, subjects}) => {
-    const {textFilter, subjectFilter, favoriteFilter} = state
+const FilterBar = ({filter, toggle, state, subjects, favOnly}) => {
+    const {textFilter, subjectFilter, favoritesFilter} = state
     const classes = useStyles()
+
+    console.log(favoritesFilter)
     
     return <Toolbar className={classes.filterBar}>
         <label className={classes.label}>Filtering Options:</label>
@@ -58,7 +60,7 @@ const FilterBar = ({filter, toggle, state, subjects}) => {
         <FormControl className={classes.formControl}>
             <FormControlLabel
                 control={
-                    <Checkbox checked={favoriteFilter} 
+                    <Checkbox checked={favOnly} 
                         color='secondary'
                         name='favoritesFilter'
                         onChange={(e) => toggle(e)}

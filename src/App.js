@@ -8,6 +8,7 @@ import Navbar from './components/Header'
 import Footer from './components/Footer'
 
 import Courses from './course_view/CoursesView'
+import FavHeader from './components/FavHeader'
 import { loadCourses, loadSubjects, logUserIn } from './store/actions';
 import {courses, subjects, users} from './data/mockData'
 
@@ -67,8 +68,8 @@ class App extends React.Component {
 
           </Route>
 
-          <Route path='/saved'>
-
+          <Route path='/favorites'>
+            {user ? <Courses title={FavHeader} /> : <Redirect to='/login' />}
           </Route>
 
           <Route path='/logout'>

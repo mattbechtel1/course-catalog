@@ -1,7 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import FilterBar from './FilterBar'
-import {courses} from '../data/mockCourses'
+import {courses} from '../data/mockData'
+import CourseTile from './CourseTile'
+import {Grid} from '@material-ui/core'
 
 class Courses extends React.Component {
     constructor() {
@@ -41,9 +43,13 @@ class Courses extends React.Component {
                 toggle={this.toggleFilter}
                 state={this.state}
             />
-            <p>TextFilter: {this.state.textFilter}</p>
-            <p>TopicFilter: {this.state.subjectFilter}</p>
-            <p>FavoritesFilter: {this.state.favoritesFilter.toString()}</p>
+            <div>
+                <Grid container spacing={4}>
+                    {this.props.courses.map(course => <Grid item key={course.id} xs={4}>
+                        <CourseTile course={course} />
+                    </Grid>)}
+                </Grid>
+            </div>
         </>
 
     }

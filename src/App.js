@@ -8,20 +8,26 @@ import Navbar from './components/Header'
 import Footer from './components/Footer'
 
 import Courses from './course_view/CoursesView'
-import { loadCourses, loadSubjects } from './store/actions';
-import {courses, subjects} from './data/mockCourses'
+import { loadCourses, loadSubjects, logUserIn } from './store/actions';
+import {courses, subjects, users} from './data/mockData'
 
 class App extends React.Component {
 
   courseList = () => courses()
   subjectList = () => subjects()
+  user = () => users().find(user => user.id === 3)
 
   componentDidMount() {
     this.props.loadCourses(this.courseList())
     this.props.loadSubjects(this.subjectList())
+
+    // logs in user by default for component testing
+    this.props.logUserIn(this.user())
   }
 
   render() {
+    const user = this.props.user
+
     return (
       <div className="App">
 
@@ -46,7 +52,7 @@ class App extends React.Component {
           </Route>
 
           <Route path='/courses'>
-            <Courses />
+            {user ? <Courses /> : <Redirect to='/' /> }
           </Route>
 
           <Route path='/profile'>
@@ -71,11 +77,10 @@ class App extends React.Component {
         </Switch>
       </Router>
 
-      <Footer />
+      {/* <Footer /> */}
       </div>
     );
   }
 }
 
-
-export default connect(null, {loadCourses, loadSubjects})(App);
+export default connect(({user}) => ({user}), {loadCourses, loadSubjects, logUserIn})(App);

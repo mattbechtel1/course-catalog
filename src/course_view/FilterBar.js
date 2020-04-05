@@ -54,6 +54,7 @@ const FilterBar = ({filter, toggle, state, subjects}) => {
             <FormHelperText className={classes.inputs}>Filter by Subject Area</FormHelperText>
         </FormControl>
 
+
         <FormControl className={classes.formControl}>
             <FormControlLabel
                 control={
@@ -63,7 +64,7 @@ const FilterBar = ({filter, toggle, state, subjects}) => {
                         onChange={(e) => toggle(e)}
                     />
                 }
-                label='Show only Saved Courses' />
+                label='Only Display Saved Courses' />
         </FormControl>
     </Toolbar>
 }

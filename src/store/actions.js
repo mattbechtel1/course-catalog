@@ -17,3 +17,7 @@ export function addFavorite(courseId) {
 export function unfavorite(courseId) {
     return {type: 'UNFAVORITE', courseId}
 }
+
+export function logout() {
+    return {type: 'LOG_USER_OUT'}
+}

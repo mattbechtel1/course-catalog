@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux' 
+import {courses} from '../data/mockData'
 
 function userReducer(state=null, action) {
     switch (action.type) {
         case 'LOG_USER_IN':
             return action.user
+        case 'LOG_USER_OUT':
+            return null
         case 'ADD_FAVORITE':
             return {
                 ...state,
@@ -32,13 +35,11 @@ function coursesReducer(state=[], action) {
                 default:
                     return state
             }
+        case 'LOG_USER_OUT':
+            return courses()
         default: 
             return state
     }
-}
-
-function courseReducer(state=null, action) {
-    return state
 }
 
 function subjectsReducer(state=[], action) {
@@ -54,7 +55,6 @@ const rootReducer = combineReducers({
     user: userReducer,
     courses: coursesReducer,
     subjects: subjectsReducer,
-    course: courseReducer
 })
 
 export default rootReducer

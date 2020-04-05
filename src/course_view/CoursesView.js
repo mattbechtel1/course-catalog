@@ -22,7 +22,7 @@ class Courses extends React.Component {
             courses: courses
         })
         
-        if (this.props.title) {
+        if (this.props.pathname === '/favorites') {
             this.setState({
                 ...this.state,
                 favoritesFilter: true
@@ -76,6 +76,6 @@ class Courses extends React.Component {
     }
 }
 
-const mapStateToProps = ({user, courses}, {location}) => ({user, courses, location})
+const mapStateToProps = ({user, courses}, {location: {pathname}}) => ({user, courses, pathname})
 
 export default withRouter(connect(mapStateToProps)(Courses))

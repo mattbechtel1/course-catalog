@@ -9,21 +9,20 @@ import Footer from './components/Footer'
 
 import Courses from './course_view/CoursesView'
 import FavHeader from './components/FavHeader'
+import Profile from './components/Profile'
+import Logout from './components/Logout'
+import Login from './components/Login'
 import { loadCourses, loadSubjects, logUserIn } from './store/actions';
-import {courses, subjects, users} from './data/mockData'
+import {courses, subjects} from './data/mockData'
 
 class App extends React.Component {
 
   courseList = () => courses()
   subjectList = () => subjects()
-  user = () => users().find(user => user.id === 3)
 
   componentDidMount() {
     this.props.loadCourses(this.courseList())
     this.props.loadSubjects(this.subjectList())
-
-    // logs in user by default for component testing
-    this.props.logUserIn(this.user())
   }
 
   render() {
@@ -57,11 +56,11 @@ class App extends React.Component {
           </Route>
 
           <Route path='/profile'>
-
+            {user ? <Profile /> : <Redirect to='/' />}
           </Route>
 
           <Route path='/login'>
-
+            {user ? <Redirect to='/' /> : <Login />}
           </Route>
 
           <Route path='/register'>
@@ -73,7 +72,7 @@ class App extends React.Component {
           </Route>
 
           <Route path='/logout'>
-
+            <Logout />
           </Route>
         </Switch>
       </Router>

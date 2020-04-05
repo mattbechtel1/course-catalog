@@ -9,23 +9,28 @@ const loggedInOpts = [
     { 
         icon: HomeIcon,
         label: 'home',
-        path: '/home'
+        path: '/home',
+        final: false
     }, {
         icon: CourseIcon,
         label: 'courses',
-        path: '/courses'
+        path: '/courses',
+        final: false
     }, {
         icon: AccountIcon,
         label: 'profile',
-        path: '/profile'
+        path: '/profile',
+        final: false
     }, {
         icon: FavoriteIcon,
         label: 'saved',
-        path: '/favorites'
+        path: '/favorites',
+        final: false
     }, {
         icon: LockIcon,
         label: 'logout',
-        path: '/logout'
+        path: '/logout',
+        final: true
     }
 ]
 
@@ -34,7 +39,8 @@ const noUserOpts = [
     {
         icon: LockIcon,
         label: 'sign in',
-        path: '/login'
+        path: '/login',
+        final: true
     }
 ]
 
@@ -44,7 +50,7 @@ const Navbar = ({user}) => {
 
     return <AppBar position='static'>
         <Toolbar>
-            {navOpts.map(({icon, label, path}) => <NavButton icon={icon} label={label} path={path} key={label}/>)}
+            {navOpts.map(({icon, label, path, final}) => <NavButton icon={icon} label={label} path={path} key={label} final={final}/>)}
         </Toolbar>
     </AppBar>    
 }

@@ -28,6 +28,7 @@ class Login extends React.Component {
             password: ''
         })
     }
+    
     submitHander = (e) => {
         e.preventDefault()
         let user = this.userDirectory().find(user => user.username === this.state.username && user.password === this.state.password)
@@ -44,11 +45,11 @@ class Login extends React.Component {
     render() {
         return <form onSubmit={this.submitHander}>
             <div>
-                <label for='username'>Username:</label>
+                <label htmlFor='username'>Username:</label>
                 <input type='text' name='username' value={this.state.username} onChange={this.changeHandler}/>
             </div>
             <div>
-                <label for='password'>Password:</label>
+                <label htmlFor='password'>Password:</label>
                 <input type='password' name='password' value={this.state.password} onChange={this.changeHandler} />
             </div>
             <div>

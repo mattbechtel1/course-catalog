@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     navButton: {
-        borderRight: 'solid',
         top: 0,
         right: 0,
         height: '100%',
@@ -14,15 +13,22 @@ const useStyles = makeStyles((theme) => ({
         color: 'inherit',
         textDecoration: 'none',
         margin: theme.spacing(1)
+    },
+    finalLink: {
+        marginLeft: 'auto',
+        color: 'inherit',
+        textDecoration: 'none',
     }
 }))
 
-const NavButton = ({icon, label, path}) => {
+const NavButton = ({icon, label, path, final}) => {
     const classes = useStyles();
+
+    const linkClass = final ? classes.finalLink : classes.link
 
     const Icon = icon
 
-    return <Link to={path} className={classes.link}>
+    return <Link to={path} className={linkClass}>
         <Button color='inherit' className={classes.navButton}>
             <Icon
                 color='inherit'

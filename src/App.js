@@ -5,8 +5,7 @@ import {connect} from 'react-redux'
 
 
 import Navbar from './components/Header'
-import Footer from './components/Footer'
-
+import Home from './components/Home'
 import Courses from './course_view/CoursesView'
 import FavHeader from './components/FavHeader'
 import Profile from './components/Profile'
@@ -37,11 +36,7 @@ class App extends React.Component {
 
         <Switch>
           <Route exact path='/'>
-
-          </Route>
-          
-          <Route path='/register'>
-
+            <Home user={user} />
           </Route>
 
           <Route path='/home'>
@@ -64,12 +59,8 @@ class App extends React.Component {
             {user ? <Redirect to='/' /> : <Login />}
           </Route>
 
-          <Route path='/register'>
-
-          </Route>
-
           <Route path='/favorites'>
-            {user ? <Courses title={FavHeader} /> : <Redirect to='/login' />}
+            {user ? <div><Courses title={FavHeader} favOnly /></div> : <Redirect to='/login' />}
           </Route>
 
           <Route path='/logout'>

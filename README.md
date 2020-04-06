@@ -10,8 +10,17 @@ Because the app does not utilize a JSON server, no changes will be persisted aft
 
 Each student has different settings appropriated to it. student1 represents someone with access to all courses; student2 represents someone with access to all courses marked as introductory courses; student3 represents someone who has been provided with only limited access to a few courses. student3 has also completed one of their courses and it is marked on their profile and on that course's page with an icon.
 
-### Views
+## Views
 
 Most views are incomplete at this time. The view found on the [course page](http://localhost:3000/courses) is the most complete with the view found on the [favorites page](http://localhost:3000/favorites) appearing very similar. Other views include:
 
-* 
+* Home View: /home
+* Course Info View: /courses/:id
+* Sign in: /login
+* Profile: /profile
+
+Most views are only available when a user is logged in. Because of the non-persistance of the user, navigation must be made inside the application (not via the browser's navigation bar).
+
+## Styling
+
+The application makes use of Material UI components and uses a theme & styling hook pattern. Flexbox organization is used where appropriate to make the app as fairly friendly to small screens. The app is optimized for Google Chrome running on desktop.

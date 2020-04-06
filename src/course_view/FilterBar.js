@@ -7,6 +7,8 @@ const useStyles = makeStyles((theme) => ({
         background: theme.palette.primary.light,
         color: theme.palette.primary.contrastText,
         position: 'relative',
+        display: 'flex',
+        flexWrap: 'wrap'
     },
     label: {
         margin: theme.spacing(1)

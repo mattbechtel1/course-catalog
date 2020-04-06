@@ -66,7 +66,7 @@ class Courses extends React.Component {
             {Title ? <Title /> : null}
             <div>
                 <Grid container spacing={4}>
-                    {relevantCourses.map(course => <Grid item key={course.id} xs={4}>
+                    {relevantCourses.map(course => <Grid item key={course.id}>
                         <CourseTile course={course} />
                     </Grid>)}
                 </Grid>
